@@ -4,6 +4,17 @@ class CardItem{
   final String subtitle;
   const CardItem({required this.urlImage,required this.title,required this.subtitle});
 }
+class ClassItem{
+   String text;
+   String subtext;
+  List<MySubjects> subjects;
+  ClassItem({required this.text,required this.subtext,required this.subjects});
+}
+class MySubjects{
+  String img;
+  String imgName;
+  MySubjects({required this.img,required this.imgName});
+}
  List<CardItem> items = [
     const CardItem(
       urlImage: 'images/image3.png',
