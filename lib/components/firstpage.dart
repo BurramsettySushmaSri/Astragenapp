@@ -12,10 +12,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-
-List<ClassItem> classes = List<ClassItem>.empty(growable: true);
-List<MySubjects> imageList(String grade) => [
+  List<ClassItem> classes = List<ClassItem>.empty(growable: true);
+  List<MySubjects> imageList(String grade) => [
         MySubjects(img: "images/gk.png", imgName: "GK"),
         MySubjects(img: "images/artzone.jpeg", imgName: "ArtZone"),
         MySubjects(img: "images/eng.jpg", imgName: "English"),
@@ -30,16 +28,21 @@ List<MySubjects> imageList(String grade) => [
   @override
   void initState() {
     classes = [
-      ClassItem(text: "Nursery", subtext: "A",subjects: imageList("Nursery")),
-      ClassItem(text: "LKG", subtext: "A",subjects: imageList("LKG")),
-      ClassItem(text: "LKG", subtext: "B",subjects: imageList("LKG1")),
-      ClassItem(text: "UKG", subtext: "A",subjects: imageList("UKG")),
-      ClassItem(text: "UKG", subtext: "B",subjects: imageList("UKG1")),
-      ClassItem(text: "Grade - A", subtext: "1",subjects: imageList("Grade-A")),
-      ClassItem(text: "Grade - B", subtext: "2",subjects: imageList("Grade-B")),
-      ClassItem(text: "Grade - C", subtext: "3",subjects: imageList("Grade-C")),
-      ClassItem(text: "Grade - D", subtext: "4", subjects: imageList("Grade-D")),
-      ClassItem(text: "Grade - E", subtext: "5",subjects: imageList("Grade-D")),
+      ClassItem(text: "Nursery", subtext: "A", subjects: imageList("Nursery")),
+      ClassItem(text: "LKG", subtext: "A", subjects: imageList("LKG")),
+      ClassItem(text: "LKG", subtext: "B", subjects: imageList("LKG1")),
+      ClassItem(text: "UKG", subtext: "A", subjects: imageList("UKG")),
+      ClassItem(text: "UKG", subtext: "B", subjects: imageList("UKG1")),
+      ClassItem(
+          text: "Grade - A", subtext: "1", subjects: imageList("Grade-A")),
+      ClassItem(
+          text: "Grade - B", subtext: "2", subjects: imageList("Grade-B")),
+      ClassItem(
+          text: "Grade - C", subtext: "3", subjects: imageList("Grade-C")),
+      ClassItem(
+          text: "Grade - D", subtext: "4", subjects: imageList("Grade-D")),
+      ClassItem(
+          text: "Grade - E", subtext: "5", subjects: imageList("Grade-D")),
     ];
     super.initState();
   }
@@ -47,65 +50,63 @@ List<MySubjects> imageList(String grade) => [
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Center(child: Text('Sample'))),
-        // backgroundColor: Colors.yellow,
-        body: (MediaQuery.of(context).size.width < 600)
-            ? (Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(
-                    height: 200,
-                  
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 6,
-                      itemBuilder: (BuildContext context, int index) =>
-                          topSection(item: items[index],),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 8,
-                      itemBuilder: (BuildContext context, int index) =>
-                          classsection(classes.elementAt(index)),
-                    ),
-                  ),
-                ],
-              ))
-            : Center(child:Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  
-                    SizedBox(
-                      width: 300,
-                    
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 8,
-                      controller: ScrollController(),
-                      itemBuilder: (BuildContext context, int index) =>
-                          topSection(item: items[index]),
-                    ),
-                  ),
+        home: Scaffold(
+            appBar: AppBar(title: const Center(child: Text('Sample'))),
+            // backgroundColor: Colors.yellow,
+            body: (MediaQuery.of(context).size.width < 600)
+                ? (Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 200,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 6,
+                          itemBuilder: (BuildContext context, int index) =>
+                              topSection(
+                            item: items[index],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: 8,
+                          itemBuilder: (BuildContext context, int index) =>
+                              classsection(classes.elementAt(index)),
+                        ),
+                      ),
+                    ],
+                  ))
+                : Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: 6,
+                          controller: ScrollController(),
+                          itemBuilder: (BuildContext context, int index) =>
+                              topSection(item: items[index]),
+                        ),
+                      ),
 
-                  // const SizedBox(width: 25),
-                  Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 8,
-                      itemBuilder: (BuildContext context, int index) =>
-                          classsection(classes.elementAt(index)),
-                    ),
-                  ),
-                ],
-              ))));
+                      // const SizedBox(width: 25),
+                      Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: 8,
+                          itemBuilder: (BuildContext context, int index) =>
+                              classsection(classes.elementAt(index)),
+                        ),
+                      ),
+                    ],
+                  )));
   }
 
   Widget classsection(ClassItem classItem) {
-    return SingleChildScrollView(
+    return Center(
       // scrollDirection: Axis.horizontal,
       child: Row(children: [
         Padding(
@@ -113,12 +114,13 @@ List<MySubjects> imageList(String grade) => [
           child: Container(
             height: 150,
             width: cardwidth(context),
-            margin: const EdgeInsets.only(left: 30,),
+            margin: const EdgeInsets.only(
+              left: 30,
+            ),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.blue,width: 1.5),
+              border: Border.all(color: Colors.blue, width: 1.5),
               borderRadius: const BorderRadius.all(Radius.circular(15)),
             ),
-
             child: Row(
               children: [
                 Container(
@@ -133,23 +135,58 @@ List<MySubjects> imageList(String grade) => [
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      classItem.text,
-                      style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      classItem.subtext,
-                      style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ],
+                    children: [
+                      Text(
+                        classItem.text,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        classItem.subtext,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                 ),
+                Expanded(
+                    child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(
+                            classItem.subjects.length,
+                            (index) => myImages(
+                              classItem.subjects.elementAt(index).img,
+                              classItem.subjects.elementAt(index).imgName,
+                            ),
+                          ),
+                        ))),
               ],
             ),
           ),
         ),
       ]),
+    );
+  }
+
+  Widget myImages(String img, String imgName) {
+    return Container(
+      margin: const EdgeInsets.all(8),
+      child: Column(
+        children: [
+          Image.asset(
+            img,
+            // "images/gk.png",
+            width: 100,
+            height: 110,
+          ),
+          Text(imgName),
+        ],
+      ),
     );
   }
 
@@ -161,20 +198,21 @@ List<MySubjects> imageList(String grade) => [
         Container(
           height: 150,
           width: 220,
-          margin: const EdgeInsets.only(left: 30,top: 25),
+          margin: const EdgeInsets.only(left: 30, top: 25),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.blue, width: 3),
             borderRadius: const BorderRadius.all(Radius.circular(25)),
           ),
           child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Padding(padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-            child:SizedBox(
-              width: 80,
-              child: Image(
-                image: AssetImage(item.urlImage),
-                fit: BoxFit.fitWidth,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: SizedBox(
+                width: 80,
+                child: Image(
+                  image: AssetImage(item.urlImage),
+                  fit: BoxFit.fitWidth,
+                ),
               ),
-            ),
             ),
 
             // ignore: prefer_const_constructors
@@ -187,22 +225,21 @@ List<MySubjects> imageList(String grade) => [
             ),
 
             SizedBox(
-                width: 90,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 40),
-                    Text(
-                      item.title,
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      item.subtitle,
-                      style: const TextStyle(fontSize: 10),
-                    ),
-                  ],
-                ),
+              width: 90,
+              child: Column(
+                children: [
+                  const SizedBox(height: 40),
+                  Text(
+                    item.title,
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    item.subtitle,
+                    style: const TextStyle(fontSize: 10),
+                  ),
+                ],
               ),
-            
+            ),
           ]),
         ),
       ]);
@@ -213,17 +250,14 @@ cardwidth(BuildContext context) {
   if (width < 307) {
     width = width * 0.75;
     return width;
-  }
-  else if (width < 465) {
+  } else if (width < 465) {
     width = width * 0.85;
     return width;
-  } 
-  else if(width<600){
-    width=width*0.9;
+  } else if (width < 600) {
+    width = width * 0.9;
     return width;
-    }else {
+  } else {
     width = width / 2.5;
     return width;
   }
-
-  }
+}
