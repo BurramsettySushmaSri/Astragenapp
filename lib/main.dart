@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'components/home_page.dart';
 
 void main() => runApp(const MyApp());
@@ -10,14 +9,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Center(child: Text('Sample'))),
-      
+
         // backgroundColor: Colors.yellow,
         body: const MyCardWidget(),
       ),
     );
   }
 }
-

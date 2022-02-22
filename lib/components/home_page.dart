@@ -1,72 +1,70 @@
 import 'package:flutter/material.dart';
 import 'modal.dart';
+
 class MyCardWidget extends StatelessWidget {
   const MyCardWidget({Key? key}) : super(key: key);
 
   @override
-  
   Widget build(BuildContext context) {
     return Scaffold(
-        body: (MediaQuery.of(context).size.width < 560)
-            ? (Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  // const Text(
-                  //   'Top Section',
-                  //   style:TextStyle(fontSize: 18),
-                  // ),
-                  Expanded(
-                    child: ListView.builder(
-                        controller: ScrollController(),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int index) =>
-                          sectionCard(context,item:items[index]),
-                    ),
+      body: (MediaQuery.of(context).size.width < 560)
+          ? (Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                // const Text(
+                //   'Top Section',
+                //   style:TextStyle(fontSize: 18),
+                // ),
+                Expanded(
+                  child: ListView.builder(
+                    controller: ScrollController(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (BuildContext context, int index) =>
+                        sectionCard(context, item: items[index]),
                   ),
-                  // const Text(
-                  //   'Class Section',
-                  //   style: TextStyle(fontSize: 18),
-                  // ),
-                  Expanded(
-                    child: ListView.builder(
-                       controller: ScrollController(),
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) =>
-                          classsection(context),
-                    ),
+                ),
+                // const Text(
+                //   'Class Section',
+                //   style: TextStyle(fontSize: 18),
+                // ),
+                Expanded(
+                  child: ListView.builder(
+                    controller: ScrollController(),
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) =>
+                        classsection(context),
                   ),
-                ],
-              ))
-            : Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Expanded(
-                    child: ListView.builder(
-                       controller: ScrollController(),
-                      shrinkWrap: true,
-                      itemCount: 5,
-                      // itemBuilder: (BuildContext context, int index) =>
-                      //     topsection(context),
-                      itemBuilder: (BuildContext context, int index) =>
-                          sectionCard(context,item:items[index]),
-                    ),
+                ),
+              ],
+            ))
+          : Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Expanded(
+                  child: ListView.builder(
+                    controller: ScrollController(),
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    // itemBuilder: (BuildContext context, int index) =>
+                    //     topsection(context),
+                    itemBuilder: (BuildContext context, int index) =>
+                        sectionCard(context, item: items[index]),
                   ),
-                  const SizedBox(width: 5),
-                  Expanded(
-                    child: ListView.builder(
-                        controller: ScrollController(),
-                      shrinkWrap: true,
-                      itemCount: 15,
-                      itemBuilder: (BuildContext context, int index) =>
-                          classsection(context),
-                    ),
+                ),
+                const SizedBox(width: 5),
+                Expanded(
+                  child: ListView.builder(
+                    controller: ScrollController(),
+                    shrinkWrap: true,
+                    itemCount: 15,
+                    itemBuilder: (BuildContext context, int index) =>
+                        classsection(context),
                   ),
-                ],
-              ),
-             
-              
+                ),
+              ],
+            ),
     );
   }
 
@@ -178,12 +176,13 @@ class MyCardWidget extends StatelessWidget {
         ),
       ]);
 }
-  cardwidth(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    if (width < 650) {
-      width = 450;
-      return width;
-    } else {
-      return 400;
-    }
-  } 
+
+cardwidth(BuildContext context) {
+  double width = MediaQuery.of(context).size.width;
+  if (width < 650) {
+    width = 450;
+    return width;
+  } else {
+    return 400;
+  }
+}
